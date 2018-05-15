@@ -9,7 +9,7 @@ export interface Options {
   camel2UnderlineComponentName?: boolean
   styleExt?: string
   transformToDefaultImport?: boolean;
-  styleLibraryDirectory?: ((name: string, libName: string) => string) | string;
+  styleLibraryDirectory?: ((name: string, libName?: string) => string) | string;
 }
 
 export interface ImportedStruct {
@@ -115,8 +115,8 @@ function createDistAst(struct: ImportedStruct, options: Options) {
     const { style, styleExt, styleLibraryDirectory } = options;
 	let styleNode = null;
 	if(styleLibraryDirectory) {
-		let stylePath = null;
-		let libraryDirectoryMy = typeof options.libraryDirectory === 'function' ? options.libraryDirectory(_importName) : join(libraryName, options.libraryDirectory);
+		let stylePath:any = null;
+		let libraryDirectoryMy:any = typeof options.libraryDirectory === 'function' ? options.libraryDirectory(_importName) : join(libraryName||"", options.libraryDirectory||"");
 		if(typeof styleLibraryDirectory === 'function') {
 			stylePath = styleLibraryDirectory(importName, libraryName);
 		}else {
