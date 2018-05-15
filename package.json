@@ -5,11 +5,11 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "scripts": {
-    "build": "rm -rf lib && tsc -p src/tsconfig.json",
-    "cover": "rm -rf ./coverage ./.nyc_output && nyc --reporter=html --reporter=lcov --exclude=node_modules --exclude=test mocha && nyc report",
+    "build": "rd /s /q lib && tsc -p src/tsconfig.json",
+    "cover": "rd /s /q ./coverage ./.nyc_output && nyc --reporter=html --reporter=lcov --exclude=node_modules --exclude=test mocha && nyc report",
     "lint": "tslint -c ./tslint.json -p ./src/tsconfig.json & standard \"test/*.js\" \"./*.js\"",
     "prepare": "npm run build",
-    "start": "rm -rf dist && NODE_ENV=production webpack",
+    "start": "rd /s /q dist && NODE_ENV=production webpack",
     "test": "mocha",
     "watch": "tsc -p ./src/tsconfig.json -w --diagnostics"
   },
